@@ -1,0 +1,14 @@
+<nav>
+  <ng-container *ngIf="!isLoggedIn">
+    <a routerLink="/login"> 🔐 Logowanie</a>
+    <a routerLink="/register"> 🔑 Rejestracja</a>
+  </ng-container>
+
+  <ng-container *ngIf="isLoggedIn">
+    <a routerLink="/swipe"> 🚗 Oceniaj</a>
+    <a routerLink="/favourites"> ❤️ Ulubione</a>
+    <span>Witaj, {{username}} !</span>
+    <button (click)="logout()"> 🚪Wyloguj</button>
+  </ng-container>
+
+</nav>

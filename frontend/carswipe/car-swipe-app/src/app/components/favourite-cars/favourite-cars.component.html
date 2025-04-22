@@ -1,0 +1,10 @@
+<div *ngIf="favouriteCars.length > 0 ; else noFavourites">
+  <div *ngFor="let car of favouriteCars" class="car-card">
+    <img [src]="car.imageUrl" alt="{{car.make}}"/>
+    <h2>{{car.make}}</h2>
+  </div>
+</div>
+
+<ng-template #noFavourites>
+  <p>Brak ulubionych.</p>
+</ng-template>

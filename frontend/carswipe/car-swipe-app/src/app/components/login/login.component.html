@@ -1,0 +1,53 @@
+<div class="login-container">
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h2>Logowanie</h2>
+    <div *ngIf="errorMessage" class="error-message">
+      {{errorMessage}}
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+    </div>
+    <input
+    type="email"
+    id="email"
+    formControlName="email"
+    class="form-control"
+    [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+    >
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="invalid-feedback">
+      <div *ngIf="loginForm.get('email')?.errors?.['required']">Wprowadź adres email</div>
+      <div *ngIf="loginForm.get('email')?.errors?.['email']">Nieprawidłowy format</div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Hasło</label>
+    </div>
+    <input
+    type="password"
+    id="password"
+    formControlName="password"
+    class="form-control"
+    [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+    >
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+      <div *ngIf="loginForm.get('password')?.errors?.['required']">Wprowadź hasło</div>
+      <div *ngIf="loginForm.get('password')?.errors?.['minLength']">Hasło musi zawierać minimum 6 znaków !</div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid || isSubmitting"
+      class="login-button"
+    >
+      <span *ngIf="isSubmitting" class="spinner"></span>
+      Zaloguj
+    </button>
+    <div class="register-link">
+      Nie masz konta?
+      <a routerLink="/register">Zarejestruj się</a>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,66 @@
+<div class="registration-container">
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+    <h2>Rejestracja</h2>
+    <div class="form-group">
+      <label for="username">Nazwa użytkownika</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control"
+        [ngClass]="{'is-invalid': registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched}"
+      >
+      <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="invalid-feedback">
+        <div *ngIf="registrationForm.get('username')?.errors?.['required']">Nazwa użytkownika jest wymagana.</div>
+        <div *ngIf="registrationForm.get('username')?.errors?.['minlength']">Nazwa użytkownika musi mieć co najmniej 3 znaki.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{'is-invalid': registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched}"
+      >
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="invalid-feedback">
+        <div *ngIf="registrationForm.get('email')?.errors?.['required']">Email jest wymagany.</div>
+        <div *ngIf="registrationForm.get('email')?.errors?.['email']">Podaj prawidłowy adres email.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Hasło</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        [ngClass]="{'is-invalid': registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched}"
+      >
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="invalid-feedback">
+        <div *ngIf="registrationForm.get('password')?.errors?.['required']">Hasło jest wymagane.</div>
+        <div *ngIf="registrationForm.get('password')?.errors?.['minlength']">Hasło musi mieć co najmniej 6 znaków.</div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="registrationForm.invalid || isSubmitting"
+    >
+      <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Stwórz konto
+    </button>
+  </form>
+</div>

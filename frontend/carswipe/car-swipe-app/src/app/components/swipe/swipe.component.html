@@ -1,0 +1,22 @@
+<div *ngIf="car" class="car-card">
+  <img [src]="car.imageUrl" alt="{{car.make}}"/>
+  <h3>{{car.make}} - Rok produkcji: {{car.productionYear}}</h3>
+
+  <ul class="car-details">
+    <li><strong>Moc:</strong>{{car.power}}</li>
+    <li><strong>Silnik:</strong>{{car.engine}}</li>
+    <li><strong>Rodzaj skrzyni biegów:</strong>{{car.gearbox}}</li>
+    <li><strong>Przebieg:</strong>{{car.mileage}}</li>
+    <li><strong>Rodzaj paliwa:</strong>{{car.fuel}}</li>
+    <li><strong>Cena:</strong>{{car.price}}</li>
+  </ul>
+
+  <div class="actions">
+    <button (click)="rejectCar()">👎 Odrzuć</button>
+    <button (click)="likeCar()">👍 Polub</button>
+  </div>
+</div>
+
+<div *ngIf="!car">
+  <p>Brak więcej aut do oceny ☹️</p>
+</div>

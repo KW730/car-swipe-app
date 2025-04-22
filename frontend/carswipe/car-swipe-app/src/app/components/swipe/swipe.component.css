@@ -1,0 +1,120 @@
+.car-card {
+  background: linear-gradient(to right, rgba(238,174,202,0.6), rgba(148,187,233,0.6));
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.car-card h3 {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.car-details {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.car-details li {
+  color: white;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.car-details li:last-child {
+  border-bottom: none;
+}
+
+.car-details li strong {
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.actions button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 48%;
+}
+
+.actions button:first-child {
+  background: rgba(255, 99, 99, 0.8);
+  color: white;
+}
+
+.actions button:last-child {
+  background: rgba(99, 255, 148, 0.8);
+  color: white;
+}
+
+.actions button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.actions button:active {
+  transform: scale(0.98);
+}
+
+/* Komunikat o braku aut */
+div:not(.car-card) > p {
+  background: linear-gradient(to right, rgba(238,174,202,0.4), rgba(148,187,233,0.4));
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  color: white;
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 576px) {
+  .car-card {
+    padding: 15px;
+  }
+
+  .car-card img {
+    height: 180px;
+  }
+
+  .actions button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
